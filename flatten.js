@@ -21,24 +21,23 @@ const assertArraysEquals = function(arr1, arr2) {
   }
 };
 
-// ACTUAL FUNCTION
-const middle = function(array) {
+//ACTUAL FUNCTION
+
+const flatten = function(array) {
   let output = [];
-  let midIndex = Math.ceil(array.length / 2) - 1;
-  if (array.length >= 3) {
-    if (array.length % 2 === 0) {
-      output.push(array[midIndex], array[midIndex + 1]);
+  for (let i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      for (let j = 0; j < array[i].length; j++) {
+        output.push(array[i][j]);
+      }
     } else {
-      output.push(array[midIndex]);
+      output.push(array[i]);
     }
   }
   return output;
 };
-
-//TEST CODE
-assertArraysEquals(middle([1]), []);
-assertArraysEquals(middle([1, 2]), []);
-assertArraysEquals(middle([1, 2, 3]), [2]);
-assertArraysEquals(middle([1, 2, 3, 4, 5, 6]), [3, 4]);
-assertArraysEquals(middle([1, 2, 3, 4, 5]), [3]);
-assertArraysEquals(middle([1, 2, 3, 4]), [2, 3]);
+flatten([4],[1,2,3,4], 2, 3, 4);
+assertArraysEquals((flatten([1, 2, [3, 4], 5, [6]])),[1, 2, 3, 4, 5, 6]);
+assertArraysEquals((flatten([1, 2, [5], [6]])),[1, 2, 5, 6]);
+assertArraysEquals(flatten([1]),[1]);
+assertArraysEquals(flatten([[4],[1,2,3,4], 2, 3, 4]),[4, 1, 2, 3, 4, 2, 3, 4]);
