@@ -13,11 +13,12 @@ const eqArrays = function(arr1, arr2) {
   return trueFalse;
 };
 
-const assertArraysEquals = function(arr1, arr2) {
-  if (eqArrays(arr1, arr2)) {
-    console.log("✅✅✅ Assertion Passed:", arr1, " === ", arr2);
-  } else if (!eqArrays(arr1, arr2)) {
-    console.log("❌❌❌ Assertion Failed:", arr1, " !== ", arr2);
+const assertArraysEqual = function(actualArr, expArr) {
+  const inspect = require('util').inspect;
+  if (eqArrays(actualArr, expArr)) {
+    console.log(`✅✅✅ Assertion Passed: ${inspect(actualArr)} === ${inspect(expArr)}`);
+  } else if (!eqArrays(actualArr, expArr)) {
+    console.log(`❌❌❌ Assertion Failed: ${inspect(actualArr)} !== ${inspect(expArr)}`);
   }
 };
 
@@ -33,13 +34,13 @@ const without = function(source, itemsToRemove) {
 };
 
 //TEST CASES
-assertArraysEquals(without([1, 2, 3, 4], [1, 4]), [2, 3]);
-assertArraysEquals(without([1, 2, 3, 4, 'w', 5, 67, 5.5], [1, 4]), [2, 3, 'w', 5, 67, 5.5]);
-assertArraysEquals(without([1, 4], [1, 4]), []);
-assertArraysEquals(without([1, 'h', 'lucy', 15, 'eijvn', 'monkey'], [15, 'monkey']), [1, 'h', 'lucy', 'eijvn']);
-assertArraysEquals(without([1, 2, 3], [1]), [2, 3]);
-assertArraysEquals(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
+assertArraysEqual(without([1, 2, 3, 4], [1, 4]), [2, 3]);
+assertArraysEqual(without([1, 2, 3, 4, 'w', 5, 67, 5.5], [1, 4]), [2, 3, 'w', 5, 67, 5.5]);
+assertArraysEqual(without([1, 4], [1, 4]), []);
+assertArraysEqual(without([1, 'h', 'lucy', 15, 'eijvn', 'monkey'], [15, 'monkey']), [1, 'h', 'lucy', 'eijvn']);
+assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
+assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
 const words = ["hello", "world", "lighthouse"];
 without(["hello", "world", "lighthouse"], ["lighthouse"]); // no need to capture return value for this test case
 // Make sure the original array was not altered by the without function
-assertArraysEquals(words, ["hello", "world", "lighthouse"]);
+assertArraysEqual(words, ["hello", "world", "lighthouse"]);

@@ -13,11 +13,12 @@ const eqArrays = function(arr1, arr2) {
   return trueFalse;
 };
 
-const assertArraysEquals = function(arr1, arr2) {
-  if (eqArrays(arr1, arr2)) {
-    console.log("✅✅✅ Assertion Passed:", arr1, " === ", arr2);
-  } else if (!eqArrays(arr1, arr2)) {
-    console.log("❌❌❌ Assertion Failed:", arr1, " !== ", arr2);
+const assertArraysEqual = function(actualArr, expArr) {
+  const inspect = require('util').inspect;
+  if (eqArrays(actualArr, expArr)) {
+    console.log(`✅✅✅ Assertion Passed: ${inspect(actualArr)} === ${inspect(expArr)}`);
+  } else if (!eqArrays(actualArr, expArr)) {
+    console.log(`❌❌❌ Assertion Failed: ${inspect(actualArr)} !== ${inspect(expArr)}`);
   }
 };
 
@@ -37,7 +38,7 @@ const flatten = function(array) {
   return output;
 };
 flatten([4],[1,2,3,4], 2, 3, 4);
-assertArraysEquals((flatten([1, 2, [3, 4], 5, [6]])),[1, 2, 3, 4, 5, 6]);
-assertArraysEquals((flatten([1, 2, [5], [6]])),[1, 2, 5, 6]);
-assertArraysEquals(flatten([1]),[1]);
-assertArraysEquals(flatten([[4],[1,2,3,4], 2, 3, 4]),[4, 1, 2, 3, 4, 2, 3, 4]);
+assertArraysEqual((flatten([1, 2, [3, 4], 5, [6]])),[1, 2, 3, 4, 5, 6]);
+assertArraysEqual((flatten([1, 2, [5], [6]])),[1, 2, 5, 6]);
+assertArraysEqual(flatten([1]),[1]);
+assertArraysEqual(flatten([[4],[1,2,3,4], 2, 3, 4]),[4, 1, 2, 3, 4, 2, 3, 4]);
