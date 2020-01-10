@@ -1,16 +1,19 @@
 const eqArrays = function(arr1, arr2) {
-  let trueFalse = true;
   if (arr1.length !== arr2.length) {
-    trueFalse = false;
-  } else {
-    for (let i = 0; i < arr2.length; i++) {
-      if (arr1[i] !== arr2[i]) {
-        trueFalse = false;
+    return false;
+  } for (let i = 0; i < arr2.length; i++) {
+      if(Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
+       if(!eqArrays(arr1[i], arr2[i])){
+         return false
+       }
+       }
+       else if (arr1[i] !== arr2[i]) {
+        return false;
       }
     }
-  }
-  return trueFalse;
+  return true;
 };
+
 const assertArraysEqual = function(actualArr, expArr) {
   const inspect = require('util').inspect;
   if (eqArrays(actualArr, expArr)) {
