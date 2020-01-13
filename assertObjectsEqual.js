@@ -64,3 +64,5 @@ assertObjectsEqual(ab, abc); //fail
 assertObjectsEqual(cd, cd2); //fail
 assertObjectsEqual(cd3, ab); //fail
 assertObjectsEqual(cd3, dc3); //pass
+
+module.exports = assertObjectsEqual;

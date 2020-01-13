@@ -54,3 +54,5 @@ assertEqual((findKey(planets, x => x.moons === 0)), "Mercury");
 // const is2 = function(x) {
 //   return x.stars === 2
 // }
+
+module.exports = findKey;

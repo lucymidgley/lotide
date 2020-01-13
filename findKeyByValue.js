@@ -50,3 +50,6 @@ assertEqual(findKeyByValue(person, "Lucy"), "name");
 assertEqual(findKeyByValue(person, 25), "age");
 assertEqual(findKeyByValue(person, "bicyle"), "transport");
 assertEqual(findKeyByValue(person, "Patrick"), undefined);
+
+
+module.exports = findKeyByValue;

@@ -36,3 +36,5 @@ const composers = ["Chopin", "Mozart", "Borodin"];
 assertArraysEqual(map(words, word => word[0]), [ 'g', 'c', 't', 'm', 't' ]);
 assertArraysEqual(map(books, book => book[2]), ['r', 'r', 'i']);
 assertArraysEqual(map(composers, composer => composers[0]), ['Chopin', 'Chopin', 'Chopin']);
+
+module.exports = map;
