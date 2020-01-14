@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@lucymidgley/lotide",
   "version": "1.0.0",
-  "description": "",
-  "main": "assertArraysEqual.js",
+  "description": "A mini clone of the [Lodash](https://lodash.com) library.",
+  "main": ".js",
   "directories": {
     "test": "test"
   },
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/lucymidgley/lotide.git"
   },
-  "author": "",
+  "author": "Lucy Midgley",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lucymidgley/lotide/issues"

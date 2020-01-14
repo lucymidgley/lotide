@@ -1,17 +1,14 @@
-const assertEqual = require('../assertEqual');
+const assert = require('chai').assert;
 const eqArrays = require('../eqArrays');
 
-assertEqual(eqArrays([1, 2], [1, 2, 3]), false); // => true
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false); // => false
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => true
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => false
-
-console.log("nested arrays tests")
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true) // => true
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]), false) // => false
-assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false)
-assertEqual(eqArrays([[2, 3], [4,[5, 6]]], [[2, 3], 4]), false)
-assertEqual(eqArrays([[2, 3], [4,[5, 6]]], [[2, 3], [4,[5, 6]]]), true)
-assertEqual(eqArrays([[2, 3], [4], 5, 6], [[2, 3], 4]), false)
-assertEqual(eqArrays([[2, 3], [4], 5, 6], [[2, 3], [4,[5, 6]]]), false)
- // => false
+describe("#eqArrays" , () => {
+  it("returns false for [1, 2] and [1, 2, 3] ", () => {
+    assert.deepEqual(eqArrays([1, 2], [1, 2, 3]), false);
+  });
+  it("returns true for nested arrays [[2, 3], [4]] and [[2, 3], [4]]) ", () => {
+    assert.deepEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true);
+  });
+  it("returns false for nested arrays [[2, 3], [4], 5, 6] and [[2, 3], [4,[5, 6]]]) ", () => {
+    assert.deepEqual(eqArrays([[2, 3], [4], 5, 6], [[2, 3], [4,[5, 6]]]), false);
+  });
+});
